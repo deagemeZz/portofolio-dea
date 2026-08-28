@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio TKJ | Jaringan & Komputer</title>
+    <!-- Import Font Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Import FontAwesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* === VARIABEL WARNA GRADASI PINK === */
+        :root {
+            --pink-light: #ff9a9e;
+            --pink-dark: #fecfef;
+            --pink-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            --pink-gradient-reverse: linear-gradient(135deg, #fecfef 0%, #ff9a9e 100%);
+            --pink-accent: #ff4d6d;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-section: #fff5f7;
+            --white: #ffffff;
+        }
+
+        /* === RESET & GLOBAL STYLE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h1, h2, h3 {
+            color: var(--text-dark);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--pink-accent);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--pink-gradient);
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        section {
+            padding: 5rem 10%;
+        }
+
+        /* === NAVBAR === */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(255, 154, 158, 0.2);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--pink-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: var(--pink-accent);
+        }
+
+        /* === HERO SECTION === */
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--pink-gradient);
+            padding-top: 80px; /* Offset navbar */
+        }
+
+        .hero-text {
+            max-width: 600px;
+            color: var(--text-dark);
+        }
+
+        .hero-text h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin: 1rem 0;
+        }
+
+        .hero-text span {
+            color: var(--pink-accent);
+            background: rgba(255,255,255,0.5);
+            padding: 0 10px;
+            border-radius: 8px;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #444;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--white);
+            color: var(--pink-accent);
+            font-weight: 600;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.3);
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--pink-accent);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .hero-img {
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .hero-img i {
+            font-size: 12rem;
+            color: var(--white);
+        }
+
+        /* === ABOUT SECTION === */
+        #about {
+            background-color: var(--bg-section);
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .about-icon {
+            flex: 1;
+            text-align: center;
+            color: var(--pink-light);
+            font-size: 15rem;
+            opacity: 0.8;
+        }
+
+        /* === SKILLS SECTION === */
+        #skills {
+            background-color: var(--white);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .skill-box {
+            padding: 2rem;
+            background: var(--bg-section);
+            border-radius: 15px;
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .skill-box:hover {
+            border-color: var(--pink-light);
+            transform: translateY(-10px);
+            background: var(--pink-gradient);
+        }
+
+        .skill-box i {
+            font-size: 3rem;
+            color: var(--pink-accent);
+            margin-bottom: 1rem;
+        }
+        
+        .skill-box:hover i, .skill-box:hover h3 {
+            color: var(--text-dark);
+        }
+
+        /* === PROJECTS SECTION === */
+        #projects {
+            background: var(--bg-section);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(255, 154, 158, 0.15);
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 154, 158, 0.4);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background: var(--pink-gradient-reverse);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--pink-accent);
+        }
+
+        .project-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        /* === CONTACT SECTION === */
+        #contact {
+            text-align: center;
+            background: var(--white);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: var(--white);
+            background: var(--pink-gradient);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.2);
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            #home {
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+                gap: 2rem;
+            }
+            #about {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .nav-links {
+                display: none; /* Disembunyikan untuk mobile sementara */
+            }
+            .hero-img {
+                width: 250px;
+                height: 250px;
+            }
+            .hero-img i {
+                font-size: 8rem;
+            }
+            .contact-info {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="logo">Portofolio.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="hero-text">
+            <h3>Halo, Selamat Datang!</h3>
+            <h1>Saya Dea Nurfadilah Seorang <span>Siswa TKJ</span></h1>
+            <p>Bersemangat dalam mempelajari Infrastruktur Jaringan, Administrasi Server, dan Konfigurasi Perangkat (Network Engineering). Siap membangun jaringan yang handal dan efisien.</p>
+            <a href="#projects" class="btn">Lihat Proyek Saya</a>
+        </div>
+        <div class="hero-img">
+            <i class="fas fa-network-wired"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-icon">
+            <i class="fas fa-server"></i>
+        </div>
+        <div class="about-content">
+            <h2 class="section-title" style="text-align: left;">Tentang Saya</h2>
+            <p>Saya adalah siswa jurusan Teknik Komputer dan Jaringan yang memiliki ketertarikan tinggi terhadap dunia IT, khususnya pada infrastruktur jaringan dan routing.</p>
+            <p>Selama masa pendidikan, saya terbiasa melakukan praktik perakitan komputer, instalasi sistem operasi, pemeliharaan hardware, hingga merancang topologi jaringan skala menengah. Saya menyukai tantangan dalam memecahkan masalah (troubleshooting) jaringan dan selalu ingin belajar teknologi terbaru.</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Keahlian Teknis</h2>
+        <div class="skills-container">
+            <div class="skill-box">
+                <i class="fas fa-wifi"></i>
+                <h3>MikroTik</h3>
+            </div>
+            <div class="skill-box">
+                <i class="fas fa-sitemap"></i>
+                <h3>Topologi & Routing</h3>
+            </div>
+            <div class="skill-box">
+                <i class="fab fa-linux"></i>
+                <h3>Linux Server</h3>
+            </div>
+            <div class="skill-box">
+                <i class="fas fa-ethernet"></i>
+                <h3>Cabling (LAN)</h3>
+            </div>
+            <div class="skill-box">
+                <i class="fas fa-tools"></i>
+                <h3>Troubleshooting</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Proyek & Praktikum</h2>
+        <div class="projects-grid">
+            
+            <!-- Proyek 1 -->
+            <div class="project-card">
+                <div class="project-img">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Topologi Lab Komputer</h3>
+                    <p>Merancang topologi fisik dan logis untuk skala laboratorium yang terdiri dari 40 unit komputer klien, lengkap dengan pembagian alokasi IP Address menggunakan metode subnetting.</p>
+                </div>
+            </div>
+
+            <!-- Proyek 2 -->
+            <div class="project-card">
+                <div class="project-img">
+                    <i class="fas fa-route"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Konfigurasi MikroTik & OLT</h3>
+                    <p>Melakukan setup bridge mode pada MikroTik untuk manajemen paralel dan mengkonfigurasi IP routing serta gateway ISP agar jaringan lokal terhubung ke internet dengan stabil.</p>
+                </div>
+            </div>
+
+            <!-- Proyek 3 -->
+            <div class="project-card">
+                <div class="project-img">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Keamanan Jaringan Dasar</h3>
+                    <p>Menerapkan manajemen bandwidth, firewall dasar, dan konfigurasi hotspot login untuk membatasi akses pengguna liar pada jaringan nirkabel.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Hubungi Saya</h2>
+        <p style="color: var(--text-light); margin-bottom: 2rem;">Tertarik untuk berkolaborasi atau membahas seputar jaringan? Jangan ragu untuk menghubungi saya!</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>siswa.tkj@email.com</p>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                <h3>GitHub</h3>
+                <p>github.com/siswatkj</p>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-instagram"></i>
+                <h3>Instagram</h3>
+                <p>@portotkj</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Portofolio TKJ. Dibuat dengan dedikasi.</p>
+    </footer>
+
+</body>
+</html>
